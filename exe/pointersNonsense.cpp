@@ -1,12 +1,8 @@
 
-#include "myHeader.h"
-#include "Geometry.h"
-#include "Mesh.h"
-#include "MeshReader.h"
-
 #include "stdio.h"
 #include "stdlib.h"
 #include <iostream>
+#include <new>
 
 template<typename T>
 void ezprint(T input)
@@ -100,6 +96,24 @@ int main()
     main1();
     main2();
     main3();
+
+    // C-style memory allocation (requires a type cast in C++)
+    int *cArray = (int*) malloc(3 * sizeof(*cArray));
+
+    cArray[0] = 11;
+    cArray[1] = 17;
+    cArray[2] = 24;
+
+    free(cArray);
+
+    // C++-style using new/delete
+    double *cppArray = new (std::nothrow) double[30000000000];
+    if(cppArray == nullptr){
+    	printf("Erreur!\n");
+    	return 1;
+    }
+
+    delete[] cppArray;
 
 	return 0;
 }

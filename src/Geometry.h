@@ -37,7 +37,8 @@ protected:
 public:
 	Element(){};
 
-	virtual void evaluateBasisFunctions(double xsi, double eta, double res[3]) = 0;
+	virtual void evaluateBasisFunctions(double xsi, double eta, double *res) = 0;
+	virtual void evaluateBasisFunctionsDerivatives(double xsi, double eta, double *res) = 0;
 	virtual double computeJacobian(double xsi, double eta) = 0;
 	virtual double computeArea() = 0;
 	virtual double integrate(quadratureRule *rule, double(*fun)(double,double)) = 0;
@@ -50,7 +51,8 @@ private:
 public:
 	Triangle(const Vertex *v0, const Vertex *v1, const Vertex *v2);
 
-	void evaluateBasisFunctions(double xsi, double eta, double res[3]);
+	void evaluateBasisFunctions(double xsi, double eta, double *res);
+	void evaluateBasisFunctionsDerivatives(double xsi, double eta, double *res);
 	double computeJacobian(double xsi, double eta);
 	double computeArea();
 	double integrate(quadratureRule *rule, double(*fun)(double,double));
@@ -64,7 +66,8 @@ private:
 public:
 	Quadrangle(const Vertex *v0, const Vertex *v1, const Vertex *v2, const Vertex *v3);
 
-	void evaluateBasisFunctions(double xsi, double eta, double res[3]);
+	void evaluateBasisFunctions(double xsi, double eta, double *res);
+	void evaluateBasisFunctionsDerivatives(double xsi, double eta, double *res);
 	double computeJacobian(double xsi, double eta);
 	double computeArea();
 	double integrate(quadratureRule *rule, double(*fun)(double,double));

@@ -11,6 +11,8 @@ add_library(myLibrary
 
 target_include_directories(myLibrary PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-add_executable(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/exe/main.cpp)
+add_executable(integrate ${CMAKE_CURRENT_SOURCE_DIR}/exe/integrate.cpp)
+target_link_libraries(integrate PRIVATE myLibrary)
 
-target_link_libraries(helloWorld PRIVATE myLibrary)
+add_executable(pointersNonsense ${CMAKE_CURRENT_SOURCE_DIR}/exe/pointersNonsense.cpp)
+target_link_libraries(pointersNonsense PRIVATE myLibrary)
